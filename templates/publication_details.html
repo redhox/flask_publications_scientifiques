@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Détails de la publication</title>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('main_page') }}">Accueil</a>
+    </header>
+    <div class="container">
+        <h1>Détails de la publication</h1>
+        <p>Type : {{ publication.type }}</p>
+        <p>Titre : {{ publication.titre }}</p>
+        <p>Auteur(s) : {{ publication.auteur }}</p>
+        <!-- Ajoute d'autres informations sur la publication ici -->
+    </div>
+</body>
+</html>

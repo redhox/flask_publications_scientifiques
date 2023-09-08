@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des publications</title>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('main_page') }}">Accueil</a>
+    </header>
+    <div>
+        <h1>Les publications</h1>
+        <h3>Nombre total de publications : {{ count }}</h3>
+    </div>
+    <div>
+        <h4>Recherche de Publications par Auteur</h4>
+        <form method="GET" action="/search">
+            <label for="author">Auteur :</label>
+            <select name="author" id="author" required>
+                <option value="" disabled selected>Sélectionnez un auteur</option>
+                {% for author in authors %}
+                    <option value="{{ author }}">{{ author }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Rechercher">
+        </form>
+    </div>
+    <div>
+        <h4>Recherche de Publications par Date</h4>
+        <form method="GET" action="/date">
+            <label for="date">Date :</label>
+            <input type="text" name="date" id="date" placeholder="AAAA" required>
+            <input type="submit" value="Rechercher">
+        </form>
+    </div>
+    {% if search_date %}
+        <p>Résultats de recherche pour la date : {{ search_date }}</p>
+    {% endif %}
+    {% for publication in publications %}
+    <p><a href="/publication_details? titre={{titre[1]}}">{{ publication.type }} - {{ publication.titre }} - {{ publication.auteur }}</a></p>
+    {% endfor %}
+</body>
+</html>
